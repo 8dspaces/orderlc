@@ -26,7 +26,7 @@ class Container(Model):
 
     id = Column(db.Integer, primary_key=True)
 
-    Length = Column(db.Integer)
+    length = Column(db.Integer)
     width = Column(db.Integer)
     height = Column(db.Integer)
 
@@ -65,7 +65,7 @@ class Good(Model):
 
     name = Column(db.String(120), nullable=False)
 
-    Length = Column(db.Integer)
+    length = Column(db.Integer)
     width = Column(db.Integer)
     height = Column(db.Integer)
     quantity = Column(db.Integer)
