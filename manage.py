@@ -18,7 +18,7 @@ from orderlc.public.models import Customer, Good, Container
 # import logging
 # logging.basicConfig(level=logging.DEBUG)
 
-CONFIG = DevConfig if get_debug_flag() else DevConfig #ProdConfig
+CONFIG = ProdConfig # DevConfig if get_debug_flag() else ProdConfig
 
 app = create_app(CONFIG)
 
