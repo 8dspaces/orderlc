@@ -18,11 +18,11 @@ from sqlalchemy.types import Enum
 class Container(Model):
 
     __tablename__ = 'container'
-    LOCATION = {
+    LOCATION = (
         u'广州',
         u'老挝',
         u'在途'
-    }
+    )
 
     id = Column(db.Integer, primary_key=True)
 
@@ -31,7 +31,7 @@ class Container(Model):
     height = Column(db.Integer)
 
     #广州／老挝／在途，根据位置决定下一步逻辑
-    location = Column(Enum(*LOCATION))
+    location = Column(Enum(*LOCATION,name='container_location'))
 
     def __repr__(self):
         return 'Container #' + str(self.id)
