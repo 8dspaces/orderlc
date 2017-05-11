@@ -61,13 +61,14 @@
                       </tr>
                     </thead>
                     <tbody>
+                     {% for c in containers%}
                       <tr>
                         <td>#</td>
                         <td>
-                          <a>货柜 #1</a>
+                          <a>货柜 {{c.id}}</a>
                         </td>
                         <td>
-                            3x4x5
+                            {{c.length}}x{{c.width}}x{{c.height}}
                         </td>
                         <td class="project_progress">
                           <div class="progress progress_sm">
@@ -76,7 +77,7 @@
                           <!-- <small>57% Complete</small> -->
                         </td>
                         <td>
-                          <button type="button" class="btn btn-success btn-xs">Success</button>
+                          <button type="button" class="btn btn-success btn-xs">{{c.location}}</button>
                         </td>
                         <td>
                           <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
@@ -84,54 +85,8 @@
                           <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                         </td>
                       </tr>
-                      <tr>
-                        <td>#</td>
-                        <td>
-                          <a>货柜 #2</a>
+                      {% endfor %}
 
-                        </td>
-                        <td>
-
-                        </td>
-                        <td class="project_progress">
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="47"></div>
-                          </div>
-                          <!-- <small>47% Complete</small> -->
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-success btn-xs">Success</button>
-                        </td>
-                        <td>
-                          <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                          <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                          <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#</td>
-                        <td>
-                          <a>货柜 #3</a>
-
-                        </td>
-                        <td>
-
-                        </td>
-                        <td class="project_progress">
-                          <div class="progress progress_sm">
-                            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
-                          </div>
-                          <!-- <small>77% Complete</small> -->
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-success btn-xs">Success</button>
-                        </td>
-                        <td>
-                          <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                          <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                          <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
                   <!-- end project list -->

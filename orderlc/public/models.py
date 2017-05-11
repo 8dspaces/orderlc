@@ -90,6 +90,8 @@ class Good(Model):
     def __str__(self):
         return self.name
 
+    def get_location(self):
+        return self.container.location
 
     # created_at = Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
     # updated_at = Column(db.DateTime, nullable=False, default=dt.datetime.utcnow, onupdate=db.func.now())

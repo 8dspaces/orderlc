@@ -10,11 +10,6 @@
 
   <title>货柜管理系统</title>
 
-  <!-- Bootstrap core CSS -->
-  {% assets "css_all" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}">
- {% endassets %}
-
  {% block css %}
   <!-- <link rel="stylesheet" href="{{ url_for('static', filename='libs/font-awesome4/css/font-awesome.min.css') }}"> -->
   <link href="{{ url_for('static', filename='public/css/bootstrap.min.css') }}" rel="stylesheet"/>
@@ -43,14 +38,10 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
 </head>
+
 <body class="nav-md">
 {% block body %}
-<!-- <header>{% block header %}{% endblock %}</header> -->
-{#% with form=form  %#}
-{#% include "nav.html" %#}
-{#% endwith %#}
 
 <div class="container body">
 <div class="main_container">
@@ -87,25 +78,23 @@
                   <ul class="nav child_menu" style="display: none">
                     <li><a href="{{ url_for('public.goods') }}">收货</a>
                     </li>
-                    <li><a href="general_elements.html">打价</a>
+                    <li><a href="{{ url_for('public.prices') }}">打价</a>
                     </li>
-                    <li><a href="general_elements.html">送货</a>
+                    <li><a href="{{ url_for('public.delivers') }}">送货</a>
                     </li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-table"></i> 跟踪 <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="tables.html">Tables</a>
-                    </li>
-                    <li><a href="tables_dynamic.html">Table Dynamic</a>
+                    <li><a href="{{ url_for('public.containers') }}">货柜情况</a>
                     </li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-bar-chart-o"></i> 审核 <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="chartjs.html">Chart JS</a>
+                    <li><a href="chartjs.html">用户分析</a>
                     </li>
-                    <li><a href="chartjs2.html">Chart JS2</a>
+                    <li><a href="chartjs2.html">收款分析</a>
                     </li>
                   </ul>
                 </li>
@@ -139,7 +128,6 @@
 
       <!-- top navigation -->
       <div class="top_nav">
-
         <div class="nav_menu">
           <nav class="" role="navigation">
             <div class="nav toggle">
@@ -149,7 +137,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="{{ url_for('static', filename='public/images/img.jpg') }}" alt="">John Doe
+                  <img src="{{ url_for('static', filename='public/images/img.jpg') }}" alt="">管理员
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -208,9 +196,9 @@
       </div>
       <!-- /top navigation -->
 
-
       <!-- page content -->
       <div class="right_col" role="main">
+
           <div>
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -235,7 +223,7 @@
             <div class="right">
               <span class="count_top"><i class="fa fa-user"></i> 广州</span>
               <div class="count">30</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <span class="count_bottom"><i class="green">40% </i> 完成收货</span>
             </div>
           </div>
           <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
@@ -243,7 +231,7 @@
             <div class="right">
               <span class="count_top"><i class="fa fa-clock-o"></i> 老挝</span>
               <div class="count">20</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>30% </i> 完成送货</span>
             </div>
           </div>
           <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
@@ -251,7 +239,7 @@
             <div class="right">
               <span class="count_top"><i class="fa fa-user"></i> 在途</span>
               <div class="count green">10</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i></i> 在途中</span>
             </div>
           </div>
           <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
@@ -259,7 +247,7 @@
             <div class="right">
               <span class="count_top"><i class="fa fa-user"></i> 完成总量</span>
               <div class="count">80</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i></i> 2017年总量</span>
             </div>
           </div>
         </div>
@@ -267,6 +255,7 @@
 
         <br />
         {% block content %}{% endblock %}
+
         <!-- <div class="row">
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320">
@@ -519,6 +508,7 @@
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
+
       </div>
       <!-- /page content -->
     </div>

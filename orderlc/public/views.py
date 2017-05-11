@@ -66,13 +66,33 @@ def about():
 
 @blueprint.route('/containers/')
 def containers():
-    form = LoginForm(request.form)
-    return render_template('public/containers.html', form=form)
+    containers = Container.query.all()
+    return render_template('public/containers.html', containers=containers)
+
+
 
 @blueprint.route('/goods/')
 def goods():
-    goods = Good.query.all()
-    return render_template('public/goods.html', goods=goods)
+    goods = []
+    for g in Good.query.all():
+        if g.get_location() == u'广州':
+            goods.append(g)
+    #prices = Good.query.filter(Good.get_location()=='广州').all()
+    return render_template('public/goods.html',goods=goods  )
+
+@blueprint.route('/prices/')
+def prices():
+    prices = Good.query.all()
+    return render_template('public/prices.html',prices=prices )
+
+@blueprint.route('/delivers/')
+def delivers():
+    delivers = []
+    for g in Good.query.all():
+        if g.get_location() == u'老挝':
+            delivers.append(g)
+    # delivers = Good.query.all().filter(Good.container.location=='老挝')
+    return render_template('public/delivers.html', delivers=delivers)
 
 @blueprint.route('/customers/')
 def customers():
