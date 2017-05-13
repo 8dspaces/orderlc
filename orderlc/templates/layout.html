@@ -25,9 +25,13 @@
 {% endblock %}
 
 {#% block js %}{% endblock %#}
+<!-- JavaScript at the bottom for fast page loading -->
+{#% assets "js_all" %}
+    <!-- <script type="text/javascript" src="{{ ASSET_URL }}"></script> -->
+{#% endassets %#}
   <script src="{{ url_for('static', filename='public/js/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='public/js/nprogress.js') }}"></script>
-
+ <script src="{{ url_for('static', filename='public/js/bootstrap.min.js') }}"></script>
 
   <!--[if lt IE 9]>
         <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -92,9 +96,9 @@
                 </li>
                 <li><a><i class="fa fa-bar-chart-o"></i> 审核 <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="chartjs.html">用户分析</a>
+                    <li><a href="{{ url_for('public.matrix') }}">用户分析</a>
                     </li>
-                    <li><a href="chartjs2.html">收款分析</a>
+                    <li><a href="{{ url_for('public.goods') }}">收款分析</a>
                     </li>
                   </ul>
                 </li>
@@ -216,42 +220,7 @@
             {% endwith %}
           </div>
 
-        <!-- top tiles -->
-        <div class="row tile_count">
-          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-            <div class="left"></div>
-            <div class="right">
-              <span class="count_top"><i class="fa fa-user"></i> 广州</span>
-              <div class="count">30</div>
-              <span class="count_bottom"><i class="green">40% </i> 完成收货</span>
-            </div>
-          </div>
-          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-            <div class="left"></div>
-            <div class="right">
-              <span class="count_top"><i class="fa fa-clock-o"></i> 老挝</span>
-              <div class="count">20</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>30% </i> 完成送货</span>
-            </div>
-          </div>
-          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-            <div class="left"></div>
-            <div class="right">
-              <span class="count_top"><i class="fa fa-user"></i> 在途</span>
-              <div class="count green">10</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i></i> 在途中</span>
-            </div>
-          </div>
-          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
-            <div class="left"></div>
-            <div class="right">
-              <span class="count_top"><i class="fa fa-user"></i> 完成总量</span>
-              <div class="count">80</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i></i> 2017年总量</span>
-            </div>
-          </div>
-        </div>
-        <!-- /top tiles -->
+
 
         <br />
         {% block content %}{% endblock %}
@@ -524,11 +493,11 @@
 
   <script type="text/javascript" src="{{ url_for('static', filename='public/js/maps/gdp-data.js') }}"></script>
 
-  <script src="{{ url_for('static', filename='public/js/bootstrap.min.js') }}"></script>
+
 
   <!-- gauge js -->
-  <script type="text/javascript" src="{{ url_for('static', filename='public/js/gauge/gauge.min.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='public/js/gauge/gauge_demo.js') }}"></script>
+  <!-- <script type="text/javascript" src="{{ url_for('static', filename='public/js/gauge/gauge.min.js') }}"></script> -->
+  <!-- <script type="text/javascript" src="{{ url_for('static', filename='public/js/gauge/gauge_demo.js') }}"></script> -->
   <!-- bootstrap progress js -->
   <script src="{{ url_for('static', filename='public/js/progressbar/bootstrap-progressbar.min.js') }}"></script>
   <!-- icheck -->
@@ -657,7 +626,7 @@
   </script>
   <!-- skycons -->
   <script src="{{ url_for('static', filename='public/js/skycons/skycons.min.js') }}"></script>
-  <script>
+  <!-- <script>
     var icons = new Skycons({
         "color": "#73879C"
       }),
@@ -672,10 +641,10 @@
       icons.set(list[i], list[i]);
 
     icons.play();
-  </script>
+  </script> -->
 
   <!-- dashbord linegraph -->
-  <script>
+  <!-- <script>
     Chart.defaults.global.legend = {
       enabled: false
     };
@@ -713,10 +682,11 @@
       tooltipFillColor: "rgba(51, 51, 51, 0.55)",
       data: data
     });
-  </script>
+  </script> -->
   <!-- /dashbord linegraph -->
+
   <!-- datepicker -->
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $(document).ready(function() {
 
       var cb = function(start, end, label) {
@@ -790,19 +760,18 @@
   </script>
   <script>
     NProgress.done();
-  </script>
+  </script> -->
 
   {#% include "footer.html" %#}
 
-  <!-- JavaScript at the bottom for fast page loading -->
-  {% assets "js_all" %}
-      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-  {% endassets %}
+
 
   <!-- end scripts -->
   {% endblock %}
   <!-- /datepicker -->
   <!-- /footer content -->
+  {% block other_js %}
+  {% endblock %}
 </body>
 
 </html>

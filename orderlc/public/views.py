@@ -98,3 +98,8 @@ def delivers():
 def customers():
     customers = Customer.query.all()
     return render_template('public/customers.html', customers=customers)
+
+@blueprint.route('/matrix/')
+def matrix():
+    customers = Customer.query.all()
+    return render_template('public/matrix.html', customers=customers)
